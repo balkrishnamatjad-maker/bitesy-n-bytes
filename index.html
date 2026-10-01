@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Bytes Bites Canteen</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800&family=Inter:wght@400;500;600&family=Dancing+Script:wght@600&display=swap" rel="stylesheet">
+<style>
+:root{--pri:#B45309;--sec:#92400E;--cream:#FFFBEB;--surf:#FEF3C7;--txt:#451A03;--card:#FFFBEB;--sh:0 6px 20px rgba(146,64,14,.15);box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){--cream:#2a1706;--surf:#3a2109;--txt:#fde8c4;--card:#33200c;--pri:#D97706}}
+:root[data-theme="dark"]{--cream:#2a1706;--surf:#3a2109;--txt:#fde8c4;--card:#33200c;--pri:#D97706}
+html{scroll-behavior:smooth;scroll-padding-top:70px}
+*{box-sizing:border-box}
+body{margin:0;background:var(--cream);color:var(--txt);font:16px/1.6 Inter,system-ui,sans-serif;padding-bottom:84px}
+h1,h2,h3{font-family:'Playfair Display',Georgia,serif;line-height:1.2;margin:0 0 .5em}
+h2{font-size:clamp(1.7rem,4vw,2.4rem)}
+.script{font-family:'Dancing Script',cursive;font-size:1.4rem;color:var(--pri)}
+section{padding:64px 20px}.w{max-width:1100px;margin:auto}
+.alt{background:var(--surf)}
+.btn{display:inline-block;border:2px solid var(--pri);background:var(--pri);color:#fff;padding:12px 24px;border-radius:99px;font:600 1rem Inter,sans-serif;cursor:pointer;text-decoration:none;transition:transform .2s,box-shadow .2s;min-height:44px}
+.btn:hover{transform:translateY(-2px);box-shadow:var(--sh)}
+.btn.o{background:transparent;border-color:#fff;color:#fff}.btn.d{background:transparent;color:var(--pri)}
+.btn.s{padding:6px 16px;min-height:36px}
+nav{position:fixed;top:0;left:0;right:0;z-index:50;display:flex;align-items:center;gap:18px;padding:12px 20px;padding-top:calc(12px + env(safe-area-inset-top,0px));color:#fff;transition:.3s}
+nav.sc{background:#fff;color:#451A03;box-shadow:0 2px 12px rgba(0,0,0,.12)}
+nav a{color:inherit;text-decoration:none;font-weight:500;cursor:pointer}
+.logo{font:800 1.3rem 'Playfair Display',serif}.links{display:flex;gap:18px;margin-left:auto}
+.cartb{position:relative;background:none;border:0;color:inherit;font-size:1.4rem;cursor:pointer}
+.badge{position:absolute;top:-6px;right:-8px;background:#DC2626;color:#fff;font:600 11px Inter;border-radius:99px;padding:1px 6px}
+.ham{display:none;background:none;border:0;color:inherit;font-size:1.6rem;cursor:pointer;margin-left:auto}
+.ov{position:fixed;inset:0;background:var(--sec);z-index:60;display:none;flex-direction:column;align-items:center;justify-content:center;gap:22px;font:700 1.6rem 'Playfair Display'}
+.ov.on{display:flex}.ov a{color:#fff;text-decoration:none;cursor:pointer}
+.hero{position:relative;min-height:100vh;display:flex;align-items:center;justify-content:center;text-align:center;color:#fff;overflow:hidden;padding:100px 20px 90px}
+.hbg{position:absolute;inset:-5%;background:radial-gradient(circle at 25% 30%,#F59E0B 0,transparent 40%),radial-gradient(circle at 80% 70%,#7C2D12 0,transparent 50%),linear-gradient(135deg,#92400E,#451A03);animation:kb 18s ease-in-out infinite alternate}
+.hbg:after{content:"🍔 🥪 ☕ 🍟 🥟 🍜 🧁";position:absolute;inset:0;font-size:64px;opacity:.13;word-spacing:60px;line-height:150px;overflow:hidden}
+@keyframes kb{to{transform:scale(1.12) translate(-1.5%,1%)}}
+.hero .in{position:relative;max-width:720px}.hero h1{font-size:clamp(2.2rem,6vw,4rem)}.hero .script{color:#FDE68A}
+.hero .btn{margin:6px}
+.scal{position:absolute;bottom:-1px;left:0;right:0;height:26px;background:radial-gradient(circle at 20px 26px,var(--surf) 19px,transparent 20px) 0 0/40px 26px repeat-x}
+.grid{display:grid;gap:22px}.g3{grid-template-columns:repeat(3,1fr)}.g2{grid-template-columns:1fr 1fr}
+.card{background:var(--card);border-radius:16px;box-shadow:var(--sh);overflow:hidden}
+.ph{display:flex;align-items:center;justify-content:center;font-size:64px;background:linear-gradient(135deg,#FCD34D,#F59E0B);height:160px}
+.card .b{padding:16px}.tag{display:inline-block;background:var(--pri);color:#fff;font-size:12px;font-weight:600;padding:3px 12px;border-radius:99px;margin:12px 0 0 16px}
+.pr{font:700 1.2rem 'Playfair Display';color:var(--pri)}
+.row{display:flex;align-items:center;gap:10px;justify-content:space-between}
+.tabs{display:flex;gap:8px;overflow-x:auto;margin:16px 0}.tabs button{flex:none;border:2px solid var(--pri);background:none;color:var(--txt);padding:8px 18px;border-radius:99px;font:600 .95rem Inter;cursor:pointer;min-height:44px}
+.tabs .on{background:var(--pri);color:#fff}
+.mi{display:flex;gap:14px;align-items:center;padding:12px;background:var(--card);border-radius:16px;box-shadow:var(--sh)}
+.mi .ph{width:64px;height:64px;font-size:32px;border-radius:12px;flex:none}.mi p{margin:0;font-size:.85rem;opacity:.8}.mi .f{flex:1}
+.plus{width:40px;height:40px;border-radius:50%;border:0;background:var(--pri);color:#fff;font-size:1.3rem;cursor:pointer}
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;text-align:center;position:relative}
+.steps:before{content:"";position:absolute;top:32px;left:16%;right:16%;border-top:3px dashed var(--sec)}
+.dot{position:relative;width:64px;height:64px;margin:0 auto 10px;border-radius:50%;background:var(--sec);display:flex;align-items:center;justify-content:center;font-size:28px}
+.gal{columns:3;gap:14px}.gt{position:relative;break-inside:avoid;margin-bottom:14px;border-radius:16px;overflow:hidden;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:56px;transition:.3s}
+.gt span{position:absolute;inset:0;display:flex;align-items:flex-end;padding:12px;background:rgba(180,83,9,.6);color:#fff;font:600 .9rem Inter;opacity:0;transition:.3s}
+.gt:hover span,.gt:focus span{opacity:1}.gt:hover{transform:scale(1.03)}
+.car{overflow:hidden}.trk{display:flex;transition:transform .5s}.sl{flex:none;width:100%;text-align:center;padding:10px 24px;font:italic 1.4rem 'Playfair Display'}
+.dots{text-align:center}.dots i{display:inline-block;width:12px;height:12px;border-radius:50%;background:var(--sec);opacity:.3;margin:4px;cursor:pointer}.dots i.on{opacity:1}
+.list{list-style:none;padding:0}.list li{margin:8px 0}
+.pass{background:var(--sec);color:#fff;border-radius:24px;padding:36px;display:grid;grid-template-columns:1fr 1fr;gap:20px;align-items:center}
+.pass .ph{height:200px;border-radius:20px;font-size:90px}
+.tl{list-style:none;padding:0;margin:0}.tl li{padding:0 0 14px 34px;position:relative;opacity:.55}.tl li:before{content:"○";position:absolute;left:0}
+.tl li.dn{opacity:1}.tl li.dn:before{content:"✓";color:#16A34A;font-weight:700}.tl li.cur{opacity:1;font-weight:700}.tl li.cur:before{content:"●";color:var(--pri)}
+.map{height:300px;border-radius:16px;background:repeating-linear-gradient(90deg,#e7d3a8 0 2px,transparent 2px 60px),repeating-linear-gradient(0deg,#e7d3a8 0 2px,transparent 2px 60px),#f6e7c1;display:flex;align-items:center;justify-content:center;font-size:56px;box-shadow:var(--sh)}
+input,select{font:1rem Inter;padding:12px 16px;border-radius:12px;border:2px solid var(--pri);background:#fff;color:#451A03;width:100%;margin:6px 0}
+footer{background:var(--sec);color:#fff;padding:48px 20px 30px}footer a{color:#FDE68A;display:block;text-decoration:none;margin:5px 0}
+.pay span{background:#fff;color:#451A03;border-radius:6px;padding:3px 10px;margin:4px 4px 0 0;display:inline-block;font-size:.8rem;font-weight:600}
+.dr{position:fixed;top:0;right:0;bottom:0;width:min(420px,100%);background:var(--cream);z-index:70;transform:translateX(105%);transition:.3s;padding:20px;overflow:auto;box-shadow:-8px 0 30px rgba(0,0,0,.3)}
+.dr.on{transform:none}
+.mod{position:fixed;inset:0;background:rgba(0,0,0,.6);z-index:80;display:none;align-items:center;justify-content:center;padding:20px}.mod.on{display:flex}
+.mod>div{background:var(--cream);border-radius:20px;padding:26px;max-width:420px;width:100%;max-height:90vh;overflow:auto}
+.qty button{width:32px;height:32px;border-radius:50%;border:2px solid var(--pri);background:none;color:var(--txt);cursor:pointer;font-weight:700}
+.bar{position:fixed;bottom:0;left:0;right:0;z-index:40;background:#fff;color:#451A03;box-shadow:0 -4px 16px rgba(0,0,0,.15);display:none;padding:8px 16px calc(8px + env(safe-area-inset-bottom,0px));text-align:center}
+.bar .r{display:flex;justify-content:space-around;margin-bottom:6px}.bar a{cursor:pointer;font-weight:600;font-size:.9rem}
+.tst{position:fixed;bottom:100px;left:50%;transform:translateX(-50%);background:#451A03;color:#fff;padding:10px 20px;border-radius:99px;z-index:90;display:none}
+.ord{background:var(--card);border-radius:16px;box-shadow:var(--sh);padding:18px;margin:14px 0}
+.vw{display:none}.vw.on{display:block}
+@media(max-width:860px){.links,nav .btn{display:none}.ham{display:block}nav .cartb{margin-left:auto}.ham{margin-left:0}.g3,.g2,.pass,.steps{grid-template-columns:1fr}.steps:before{display:none}.gal{columns:2}.bar{display:block}}
+@media(min-width:600px) and (max-width:860px){.g3{grid-template-columns:1fr 1fr}}
+@media(prefers-reduced-motion:reduce){.hbg{animation:none}*{transition:none!important}}
+</style></head><body>
+<nav id="nav"><a class="logo" onclick="go('home')">🍔 Bytes Bites</a>
+<div class="links"><a onclick="go('home')">Home</a><a onclick="go('home','menu')">Menu</a><a onclick="go('home','menu')">Order Online</a><a onclick="go('orders')">My Orders</a><a onclick="go('home','about')">About Us</a><a onclick="go('home','visit')">Contact</a><a onclick="authBtn()" id="authl">Login</a></div>
+<button class="cartb" aria-label="Cart" onclick="cart(1)">🛍️<span class="badge" id="cnt">0</span></button>
+<a class="btn s" onclick="go('home','menu')">Order Now</a><button class="ham" aria-label="Menu" onclick="ov.classList.toggle('on')">☰</button></nav>
+<div class="ov" id="ov" onclick="this.classList.remove('on')"><a onclick="go('home')">Home</a><a onclick="go('home','menu')">Menu</a><a onclick="go('orders')">My Orders</a><a onclick="go('home','about')">About Us</a><a onclick="go('home','visit')">Contact</a><a onclick="authBtn()">Login / Logout</a></div>
+
+<div class="vw on" id="v-home">
+<header class="hero"><div class="hbg"></div><div class="in"><div class="script">Fresh Food. Fast Pickup.</div><h1>Your Campus Canteen, Made Smarter.</h1><p>Skip the queue, order your favorite food online, choose your pickup time, and grab your meal when it's ready.</p><a class="btn" onclick="go('home','menu')">View Today's Menu</a><a class="btn o" onclick="go('home','menu')">Order for Pickup</a></div><div class="scal"></div></header>
+
+<section class="alt" style="padding-top:40px"><div class="w"><h2>Today's Favorites</h2><p>🕘 Freshly updated every morning</p><div class="grid g3" id="fav"></div></div></section>
+
+<section id="menu"><div class="w"><h2>Menu</h2><div class="tabs" id="tabs"></div><div class="grid g2" id="mg"></div><p style="text-align:center;margin-top:24px"><a class="btn d" onclick="go('home','menu')">View Full Menu →</a></p></div></section>
+
+<section class="alt" id="about"><div class="w grid g2" style="align-items:center"><div class="ph" style="height:340px;border-radius:20px;font-size:100px">👩‍🍳👨‍🍳</div><div><h2>More Than Just a Canteen</h2><p>Bytes Bites Canteen was created to make campus food faster, easier, and more convenient for students. Instead of waiting in long queues between lectures, students can browse the menu, place their order online, choose a pickup time, and collect their food when it's ready.</p><p><b>Fresh food. Simple ordering. More time for what matters.</b></p><div class="script">— The Bytes Bites Team</div><br><a class="btn d" onclick="go('home','visit')">Learn More →</a></div></div></section>
+
+<section><div class="w"><h2 style="text-align:center">Order Ahead, Skip the Queue</h2><div class="steps"><div><div class="dot">🍽️</div><h3>Browse the Menu</h3><p>Choose your favorite food and drinks from today's menu.</p></div><div><div class="dot">⏰</div><h3>Pick Your Time</h3><p>Select a convenient pickup time between your classes.</p></div><div><div class="dot">🛍️</div><h3>Grab &amp; Go</h3><p>Your order will be ready when you reach the pickup counter.</p></div></div><p style="text-align:center;margin-top:28px"><a class="btn" onclick="go('home','menu')">Start Your Order</a></p></div></section>
+
+<section class="alt"><div class="w"><h2>Canteen Gallery</h2><div class="gal" id="gal"></div><p style="text-align:center"><b>Follow @bytesbites</b><br>Follow us for today's specials, updates, and campus food!</p></div></section>
+
+<section><div class="w"><h2 style="text-align:center">Student Reviews</h2><div class="car" id="car"><div class="trk" id="trk"></div></div><div class="dots" id="dots"></div></div></section>
+
+<section class="alt"><div class="w grid g2" style="align-items:center"><div><h2>Food for Campus Events</h2><p>Planning a club meeting, workshop, presentation, sports event, or college celebration? Order food for your group through Bytes Bites.</p><ul class="list"><li>🍔 Bulk snack orders</li><li>🥪 Food packages for meetings</li><li>🎉 College event catering</li><li>☕ Tea, coffee &amp; beverage packages</li></ul><a class="btn" onclick="toast('Group order request noted. We will call you back.')">Request a Group Order</a></div><div class="ph" style="height:300px;border-radius:20px;font-size:90px">🥪🍟🥟</div></div></section>
+
+<section><div class="w"><div class="pass"><div><span class="tag" style="margin:0 0 10px;background:#FDE68A;color:#451A03">🎓 Made for Students</span><h2>The Student Meal Pass</h2><p>Get your regular campus meals at a convenient package price and enjoy faster ordering throughout the week.</p><div class="pr" style="color:#FDE68A;font-size:2rem">₹499/week</div><ul class="list"><li>✓ 5 selected meals</li><li>✓ 5 drinks</li><li>✓ Priority pickup</li><li>✓ Exclusive weekly offers</li></ul><a class="btn o" onclick="toast('Meal Pass coming soon to the prototype.')">View Meal Pass</a></div><div class="ph">🍱</div></div></div></section>
+
+<section class="alt"><div class="w grid g2" style="align-items:center"><div><h2>Know When Your Food Is Ready</h2><p>Track your order in real time from your phone.</p><a class="btn" onclick="go('orders')">Track My Order</a></div><div class="ord"><b>ORDER #BB1024</b><ul class="tl" style="margin-top:14px"><li class="dn">Order Placed</li><li class="dn">Order Accepted</li><li class="cur">Preparing</li><li>Ready for Pickup</li><li>Completed</li></ul></div></div></section>
+
+<section id="visit"><div class="w grid g2"><div class="map">📍</div><div><h2>Visit Bytes Bites</h2><p><b>College Campus Canteen</b></p><p>Mon–Fri: 8:00 AM – 5:00 PM<br>Saturday: 9:00 AM – 2:00 PM<br>Sunday: Closed</p><p>📞 +91 XXXXX XXXXX</p><p>🍽️ Dine-in seating · 📱 Online pre-order · ⚡ Fast pickup · ♿ Accessible seating · 🥤 Fresh drinks</p><p class="script">📚 Perfect for a quick meal between lectures!</p></div></div></section>
+
+<section class="alt"><div class="w" style="max-width:520px;text-align:center"><h2>Join the Bytes Bites Club</h2><p>Get notified about new menu items, special offers, event meals, and student discounts.</p><input id="em" type="email" placeholder="Enter your email"><button class="btn" onclick="em.value.includes('@')?(toast('Welcome to the club!'),em.value=''):toast('Enter a valid email')">Join Now</button></div></section>
+
+<footer><div class="w grid g3"><div><h3>Menu</h3><a onclick="tab('Snacks')">Snacks</a><a onclick="tab('Meals')">Meals</a><a onclick="tab('Breakfast')">Breakfast</a><a onclick="tab('Drinks')">Drinks</a><a onclick="tab('Desserts')">Desserts</a></div><div><h3>Company</h3><a onclick="go('home','about')">About Us</a><a onclick="go('home')">How It Works</a><a>Group Orders</a><a>Student Meal Pass</a><a onclick="go('home','visit')">Contact</a></div><div><h3>Connect</h3><a>Instagram</a><a>Facebook</a><a>WhatsApp</a><div class="pay"><span>UPI</span><span>Visa</span><span>Mastercard</span><span>Google Pay</span><span>PhonePe</span></div></div></div><p style="text-align:center;margin-top:30px">© 2026 Bytes Bites Canteen. Fresh food, smart ordering, happy students.</p></footer>
+</div>
+
+<div class="vw" id="v-orders"><section style="padding-top:100px;min-height:100vh"><div class="w"><h2>My Orders</h2><div id="ol"></div></div></section></div>
+<div class="vw" id="v-admin"><section style="padding-top:100px;min-height:100vh"><div class="w"><h2>Admin dashboard</h2><div id="al"></div></div></section></div>
+
+<div class="dr" id="dr"><div class="row"><h2 style="margin:0">Your bag</h2><button class="plus" onclick="cart(0)">×</button></div><div id="ci"></div></div>
+<div class="mod" id="lg" onclick="if(event.target==this)this.classList.remove('on')"><div><h2>Login</h2><select id="role"><option value="student">Student</option><option value="admin">Admin</option></select><input id="un" placeholder="Name / admin username"><input id="pw" type="password" placeholder="Password (admin: admin123)"><button class="btn" onclick="login()">Login</button></div></div>
+<div class="mod" id="lb" onclick="this.classList.remove('on')"><div id="lbc" style="text-align:center;font-size:110px"></div></div>
+<div class="bar"><div class="r"><a onclick="go('home')">🏠 Home</a><a onclick="go('home','menu')">🍔 Menu</a><a onclick="cart(1)">🛒 Cart</a></div><a class="btn" style="display:block" onclick="go('home','menu')">ORDER NOW</a></div>
+<div class="tst" id="tst"></div>
+
+<script>
+const $=id=>document.getElementById(id);
+const M=[[1,'Vada Pav','Crispy potato vada in soft pav with spicy chutney.',20,'Snacks','🥔',1],[2,'Samosa','Golden pastry stuffed with spiced potato.',15,'Snacks','🥟',1],[3,'Veg Sandwich','Fresh veggies, cheese and special sauce, toasted.',40,'Snacks','🥪',1],[4,'French Fries','Hot, salted and crunchy.',50,'Snacks','🍟',1],[5,'Cheese Maggi','Masala noodles topped with melted cheese.',60,'Snacks','🍜',1],[6,'Veg Puff','Flaky puff with a spicy veg filling.',25,'Snacks','🥐',1],
+[7,'Veg Thali','Dal, sabzi, rice, roti and salad.',90,'Meals','🍛',1],[8,'Chicken Biryani','Fragrant rice with tender chicken.',120,'Meals','🍗',0],[9,'Paneer Wrap','Grilled paneer and veggies in a roll.',70,'Meals','🌯',1],[10,'Fried Rice','Wok-tossed veg fried rice.',80,'Meals','🍚',1],
+[11,'Poha','Light flattened rice with peanuts.',30,'Breakfast','🍲',1],[12,'Idli Sambar','Two soft idlis with sambar.',35,'Breakfast','🍥',1],[13,'Aloo Paratha','Stuffed flatbread with curd.',45,'Breakfast','🫓',1],[14,'Egg Sandwich','Grilled egg and cheese sandwich.',45,'Breakfast','🍳',0],
+[15,'Cold Coffee','Creamy chilled coffee.',50,'Drinks','🧋',1],[16,'Masala Chai','Hot ginger-cardamom tea.',15,'Drinks','☕',1],[17,'Lemon Soda','Fizzy and fresh.',30,'Drinks','🍋',1],[18,'Mango Shake','Thick seasonal mango shake.',55,'Drinks','🥭',1],
+[19,'Brownie','Fudgy chocolate brownie.',40,'Desserts','🍫',1],[20,'Ice Cream Cup','Vanilla or chocolate scoop.',30,'Desserts','🍨',1],[21,'Gulab Jamun','Two warm syrupy jamuns.',35,'Desserts','🍮',1]].map(a=>({id:a[0],n:a[1],d:a[2],p:a[3],c:a[4],e:a[5],v:a[6]}));
+const ST=['Order Placed','Order Accepted','Preparing','Ready for Pickup','Completed'];
+const ld=(k,d)=>{try{return JSON.parse(localStorage.getItem(k))||d}catch(e){return d}};
+const sv=(k,v)=>{try{localStorage.setItem(k,JSON.stringify(v))}catch(e){}};
+let C=ld('bb_cart',{}),O=ld('bb_orders',[]),U=ld('bb_user',null),cat='Snacks';
+const item=id=>M.find(m=>m.id==id);
+function toast(t){tst.textContent=t;tst.style.display='block';clearTimeout(toast.t);toast.t=setTimeout(()=>tst.style.display='none',2500)}
+function go(v,anchor){ov.classList.remove('on');document.querySelectorAll('.vw').forEach(x=>x.classList.remove('on'));$('v-'+v).classList.add('on');if(v=='orders')rOrders();if(v=='admin')rAdmin();
+ setTimeout(()=>{if(anchor)$(anchor).scrollIntoView({behavior:'smooth'});else scrollTo(0,0)},30);scrollY;onScroll()}
+function onScroll(){nav.classList.toggle('sc',scrollY>60||!$('v-home').classList.contains('on'))}
+addEv
